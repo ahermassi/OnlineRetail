@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>show flights</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+<style>
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+    .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+    .fa-anchor,.fa-coffee {font-size:200px}
+</style>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+    <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+        <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+        <a href="index.jsp" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+        <a href="login" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">login</a>
+        <a href="login" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">SignUp</a>
+        <a href="logout" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Logout</a>
+        <a href="bookingPage" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">search flight</a>
+    </div>
+</div>
+<p>2</p>
+<p>2</p>
+
+
+
+<%List list = (List)request.getAttribute("listOfAllFlights"); %>
+<%for(int i = 0; i < list.size(); i++){%>
+<div class="ui red segment">
+    <%Flights flights = (Flights) list.get(i);%>
+    <%=list.get(i)%>>
+</div>
+<a href="bookFlight/<%=flights.getTripMode()%>/<%=flights.getDeparture()%>/<%=flights.getDestination()%>/<%=flights.getDepartureDate()%>/<%=flights.getReturningDate()%>/<%=flights.getFlightClass()%>"><button class="fluid ui button">Book now</button></a>
+<%}%>
+
+</body>
+</html>
