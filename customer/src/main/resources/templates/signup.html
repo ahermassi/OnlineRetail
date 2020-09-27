@@ -3,25 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <title>Sin Up</title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-	crossorigin="anonymous">
-<link rel="stylesheet" href="../css/style.css">
+
 </head>
 <body>
 	<div class="signup-page">
 		<h2>Create an account</h2>
 		<br>
 		<div class="form">
-			<form action="signup" method="post" class="login-form" th:object="${customerData}">
-				<input type="text" placeholder="username" th:field="*{username}"/> 
+			<form action="#" method="post" class="login-form" th:object="${customerData}" th:action="@{/signup}">
+				
+				<label th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="alert alert-danger">Username error</label>
+				<input type="text" placeholder="username" th:field="*{username}"/>
+				 
+				<label th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="alert alert-danger"></label>
 				<input type="password" placeholder="password" th:field="*{password}" />
+				
+				<label th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="alert alert-danger"></label>
 				<input type="text" placeholder="First name" th:field="*{firstName}"/> 
-				<input type="text" placeholder="Last name" th:field="*{lastName}"/> 
+				
+				<label th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="alert alert-danger"></label>
+				<input type="text" placeholder="Last name" th:field="*{lastName}"/>
+				
+				<label th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert alert-danger"></label> 
 				<input type="email" placeholder="Email address" th:field="*{email}"/> 
+				
 				<input type="number" placeholder="Age" th:field="*{age}"/> 
+				
 				<input type="text" placeholder="Address" th:field="*{address}"/> 
+				
 				<button>Submit</button>
 				<p class="message">
 					Already have an account? <a href="/login">Log In</a>

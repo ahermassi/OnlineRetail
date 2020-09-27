@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<title>Home</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<p th:if="${#lists.isEmpty(products)}" th:text='No'/>
+	<div th:fragment="products">
+    <div class="panel-default well" th:each="product : ${products}">
+        <div class="panel-heading">
+            <h1 th:text="${product.name}"></h1>
+        </div>
+        <h3 th:text="${product.description}" class="panel-body">Description</h3>
+        <div class="row panel-footer">
+            <div th:inline="text" class="col-md-2">Price: [[${product.price}]] $</div>
+            <div th:inline="text" class="col-md-9">In Stock: [[${product.quantity}]]</div>
+            <a th:href="@{'/shoppingCart/addProduct/{id}'(id=${product.id})}" class="col-md-1"
+               sec:authorize="isAuthenticated()" th:if="${product.quantity}>0">
+                <button type="button" class="btn btn-primary" th:text="Buy">Buy</button>
+            </a>
+        </div>
+        <br></br>
+    </div>
+</div>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+		crossorigin="anonymous"></script>
+</body>
+</html>

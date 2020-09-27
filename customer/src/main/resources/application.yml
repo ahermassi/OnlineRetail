@@ -17,7 +17,7 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
@@ -33,4 +33,4 @@ eureka:
       
 
 productms:
-  url: http://productms/product
+  all-products: http://productms/getAll

@@ -2,11 +2,17 @@ package com.retail.customerms.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "Customer")
@@ -16,19 +22,38 @@ public class CustomerModel implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@NotNull(message="Please enter a username")
 	private String username;
 	
+	@Length(min = 8, message = "Your password must have at least 8 characters")
 	private String password;
 	
 	private String firstName;
 	
 	private String lastName;
 	
+	@NotNull(message="Please enter an email")
 	private String email;
 	
 	private Integer age;
 	
 	private String address;
+	
+	public CustomerModel() {
+		super();
+	}
+
+	public CustomerModel(Long id, String username, String password, String firstName, String lastName, String email,
+			Integer age, String address) {
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.age = age;
+		this.address = address;
+	}
 
 	public Long getId() {
 		return id;
@@ -91,18 +116,6 @@ public class CustomerModel implements Serializable {
 	}
 
 	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public CustomerModel(Long id, String username, String password, String firstName, String lastName, String email,
-			Integer age, String address) {
-		this.id = id;
-		this.username = username;
-		this.password = password;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.age = age;
 		this.address = address;
 	}
 

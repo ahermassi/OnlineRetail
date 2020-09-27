@@ -5,6 +5,12 @@ public class CustomerLogin {
 	private String username;
 	private String password;
 	
+	
+	
+	public CustomerLogin() {
+		super();
+	}
+
 	public CustomerLogin(String username, String password) {
 		super();
 		this.username = username;
