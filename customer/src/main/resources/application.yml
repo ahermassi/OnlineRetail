@@ -33,4 +33,4 @@ eureka:
       
 
 productms:
-  all-products: http://productms/getAll
+  all-products: http://productms/getAllProducts

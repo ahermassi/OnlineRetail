@@ -32,9 +32,9 @@ public class CustomerController {
 	@GetMapping("/home")
     public ModelAndView home() {
 
-//        List<Object> products = customerService.findAllProducts();
+        List<Object> products = customerService.findAllProducts();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("products", new ArrayList<>());
+        modelAndView.addObject("products", products);
         modelAndView.setViewName("home");
         return modelAndView;
     }
